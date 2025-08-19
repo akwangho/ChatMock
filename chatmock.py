@@ -904,6 +904,7 @@ def create_app(
                 json=responses_payload,
                 stream=True,
                 timeout=600,
+                verify=False,  # 跳过SSL证书验证
             )
         except requests.RequestException as e:
             resp = make_response(jsonify({"error": {"message": f"Upstream ChatGPT request failed: {e}"}}), 502)
